@@ -3,17 +3,15 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Spatie\Permission\Traits\HasRoles;
 
-class Guru extends Model
+class Siswa extends Model
 {
-    use HasFactory;
+    use HasRoles;
 
-    protected $table = 'gurus';
-        
     protected $fillable = [
         'nama',
-        'nip',
+        'nisn',
         'gender',
         'alamat',
         'kontak',
@@ -24,9 +22,4 @@ class Guru extends Model
     protected $hidden = [
         'password'
     ];
-
-    protected $casts = [
-        'password' => 'hashed'
-    ];
-    
 }
