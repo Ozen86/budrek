@@ -29,4 +29,8 @@ class Guru extends Model
         'password' => 'hashed'
     ];
     
+    public function Pklis()
+    {
+        return $this->hasMany(Pklis::class, 'guru_id');
+    }
 }

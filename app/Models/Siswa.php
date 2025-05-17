@@ -22,4 +22,9 @@ class Siswa extends Model
     protected $hidden = [
         'password'
     ];
+
+    public function pklis()
+    {
+        return $this->hasMany(Pklis::class, 'siswa_id');
+    }
 }

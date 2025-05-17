@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('siswas', function (Blueprint $table) {
             $table->id();
-            $table->string('nama', 50);
-            $table->string('nisn', 50)->uniqe();
+            $table->string('nama', length:50);
+            $table->string('nisn', length:50)->uniqe();
             $table->enum('gender', ['Laki-laki', 'Perempuan']);
             $table->text('alamat');
-            $table->string('kontak', 16);
-            $table->string('email', 50)->unique();
+            $table->string('kontak', length:16);
+            $table->string('email', length:50)->unique();
             $table->string('password');
             $table->timestamps();
         });
