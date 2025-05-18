@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama', 50);
             $table->string('nip', 18);
-            $table->string('gender', ['L', 'P'])->default('L');
+            $table->enum('gender', ['L', 'P'])->default('L');
             $table->text('alamat');
             $table->string('kontak', 16);
             $table->string('email', 18)->unique();
