@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Support\Facades\DB;
 
 class Siswa extends Model
 {
@@ -25,6 +26,11 @@ class Siswa extends Model
 
     public function pklis()
     {
-        return $this->hasMany(Pklis::class, 'siswa_id');
+        return $this->hasMany(Pklis::class);
+    }
+
+    public function getKetGenderAttribute()
+    {
+        return DB::selectOne("SELECT ketGender(?) AS gender", [$this->gender])->gender ?? '-';
     }
 }

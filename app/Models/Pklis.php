@@ -17,16 +17,16 @@ class Pklis extends Model
 
     public function siswa()
     {
-        return $this->belongsTo(Siswa::class, 'siswa_id');
+        return $this->belongsTo(Siswa::class);
     }
 
-    public function indsutri()
+    public function industri()
     {
-        return $this->belongsTo(indsutri::class, 'industri_id');
+        return $this->belongsTo(Industri::class);
     }
 
     public function guru()
     {
-        return $this->belongsTo(Guru::class, 'guru_id');
+        return $this->belongsTo(Guru::class);
     }
 }

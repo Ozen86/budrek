@@ -31,6 +31,6 @@ class Guru extends Model
     
     public function Pklis()
     {
-        return $this->hasMany(Pklis::class, 'guru_id');
+        return $this->hasMany(Pklis::class);
     }
 }

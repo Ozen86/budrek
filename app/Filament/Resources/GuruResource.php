@@ -44,8 +44,8 @@ class GuruResource extends Resource
                     ->maxLength(18),
                 Select::make('gender')
                     ->options([
-                        'Laki-laki' => 'Laki-laki',
-                        'Perempuan' => 'Perempuan',
+                        'L' => 'Laki-laki',
+                        'P' => 'Perempuan',
                     ])
                     ->required(),
                 Textarea::make('alamat')
@@ -80,8 +80,8 @@ class GuruResource extends Resource
                 Tables\Columns\TextColumn::make('gender')
                     ->badge()
                     ->color(fn (string $state): string => match ($state) {
-                        'Laki-laki' => 'primary',
-                        'Perempuan' => 'danger',
+                        'L' => 'primary',
+                        'P' => 'danger',
                     }),
                 Tables\Columns\TextColumn::make('kontak')
                     ->searchable(),
@@ -97,8 +97,8 @@ class GuruResource extends Resource
             ->filters([
                 SelectFilter::make('gender')
                     ->options([
-                        'Laki-laki' => 'Laki-laki',
-                        'Perempuan' => 'Perempuan',
+                        'L' => 'Laki-laki',
+                        'P' => 'Perempuan',
                     ]),
             ])
             ->actions([

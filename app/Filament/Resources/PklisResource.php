@@ -15,11 +15,9 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\DatePicker;
 use Illuminate\Support\Facades\Hash;
 use FIlament\Tables\Columns\TextColumn;
-use App\Models\Siswa;
-use App\Models\Industri;
-use App\Models\Guru;
 
 class PklisResource extends Resource
 {
@@ -33,33 +31,23 @@ class PklisResource extends Resource
 
     protected static ?string $pluralModelLabel = 'PKL';
 
-    protected static ?string $navigationGroup = 'Internships';
-
-    public static function form(Form $form): Form
+     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 Select::make('siswa_id')
-                    ->label('Siswa')
-                    ->options(Siswa::all()->pluck('nama', 'id'))
-                    ->searchable()
+                    ->relationship('siswa', 'nama')
+                    ->label('Nama Siswa')
                     ->required(),
                 Select::make('industri_id')
-                    ->label('Industri')
-                    ->options(Industri::all()->pluck('nama', 'id'))
-                    ->searchable()
+                    ->relationship('industri', 'nama_industri')
                     ->required(),
                 Select::make('guru_id')
-                    ->label('Guru')
-                    ->options(Guru::all()->pluck('nama', 'id'))
-                    ->searchable()
+                    ->relationship('guru', 'nama')
+                    ->label('Nama Guru Pembimbing')
                     ->required(),
-                DatePicker::make('mulai')
-                    ->label('Start Date')
-                    ->required(),
-                DatePicker::make('selesai')
-                    ->label('End Date')
-                    ->required(),
+                DatePicker::make('mulai')->required()->label('Tanggal Mulai'),
+                DatePicker::make('selesai')->label('Tanggal Selesai'),
             ]);
     }
 
@@ -70,7 +58,7 @@ class PklisResource extends Resource
                 Tables\Columns\TextColumn::make('siswa.nama')
                     ->label('Siswa')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('industri.nama')
+                Tables\Columns\TextColumn::make('industri.nama_industri')
                     ->label('Industri')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('guru.nama')
@@ -79,8 +67,8 @@ class PklisResource extends Resource
                 Tables\Columns\TextColumn::make('mulai')
                     ->label('Start Date')
                     ->date(),
-                Tables\Columns\TextColumn::make('Selesai')
-                    ->label('Selesai Date')
+                Tables\Columns\TextColumn::make('selesai')
+                    ->label('End Date')
                     ->date(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->label('Created At')
@@ -119,3 +107,4 @@ class PklisResource extends Resource
         ];
     }
 }
+

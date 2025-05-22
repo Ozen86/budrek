@@ -46,8 +46,8 @@ class SiswaResource extends Resource
                     ->unique(ignoreRecord: true),
                 Select::make('gender')
                     ->options([
-                        'Laki-laki' => 'Laki-laki',
-                        'Perempuan' => 'Perempuan',
+                        'L' => 'Laki-laki',
+                        'P' => 'Perempuan',
                     ])
                     ->required(),
                 Textarea::make('alamat')
@@ -88,8 +88,8 @@ class SiswaResource extends Resource
                 Tables\Columns\TextColumn::make('gender')
                     ->badge()
                     ->color(fn (string $state): string => match ($state) {
-                        'Laki-laki' => 'primary',
-                        'Perempuan' => 'danger',
+                        'L' => 'primary',
+                        'P' => 'danger',
                     }),
                 Tables\Columns\TextColumn::make('kontak')
                     ->searchable(),
@@ -105,8 +105,8 @@ class SiswaResource extends Resource
             ->filters([
                 SelectFilter::make('gender')
                     ->options([
-                        'Laki-laki' => 'Laki-laki',
-                        'Perempuan' => 'Perempuan',
+                        'L' => 'Laki-laki',
+                        'P' => 'Perempuan',
                     ]),
             ])
             ->actions([

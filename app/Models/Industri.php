@@ -22,6 +22,6 @@ class Industri extends Model
 
     public function pklis()
     {
-        return $this->hasMany(Pklis::class, 'industri_id');
+        return $this->hasMany(Pklis::class);
     }
 }
