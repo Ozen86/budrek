@@ -44,11 +44,11 @@ class Index extends Component
                ($gender === 'P' ? 'Perempuan' : 'Status tidak diketahui');
     }
 
-    // public function ketStatusPKL($status)
-    // {
-    //     return $status === 0 ? 'Belum diterima PKL' :
-    //            ($status === 1 ? 'Sudah diterima PKL' : 'Status tidak diketahui');
-    // }
+    public function ketStatusPKL($status)
+    {
+        return $status === 0 ? 'Belum diterima PKL' :
+               ($status === 1 ? 'Sudah diterima PKL' : 'Status tidak diketahui');
+    }
 
     public function delete($id)
     {
